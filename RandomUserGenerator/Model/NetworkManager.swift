@@ -15,9 +15,8 @@ class NetworkManager {
     func performRequest(url: String, success: @escaping (Data)->(), failure: @escaping (Error?)->()) {
         
         guard let url = URL(string: url) else { failure(nil); return }
-        let session = URLSession(configuration: .default)
         
-        session.dataTask(with: url) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             
             if let error = error { failure(error); return }
             
@@ -26,7 +25,7 @@ class NetworkManager {
             } else {
                 failure(nil)
             }
-            
-        }.resume()
+        }
+        task.resume()
     }
 }

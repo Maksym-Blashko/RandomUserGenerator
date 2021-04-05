@@ -5,7 +5,7 @@
 //  Created by Blashko Maksim on 03.04.2021.
 //
 
-import Foundation
+import UIKit
 
 class ApiManager {
     
@@ -29,5 +29,17 @@ class ApiManager {
         } failure: { (error) in
             print(error?.localizedDescription as Any)
         }        
+    }
+    
+    func getUserImage(url: String, complition: @escaping (UIImage)->(Void)) {
+        
+        networkManager.performRequest(url: url) { (data) in
+
+            guard let image = UIImage(data: data) else { return }
+            complition(image)
+            
+        } failure: { (error) in
+            print(error?.localizedDescription as Any)
+        }
     }
 }
