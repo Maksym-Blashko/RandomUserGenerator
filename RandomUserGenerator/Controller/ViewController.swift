@@ -37,14 +37,24 @@ class ViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDescription" {
+            let descriptionVC = segue.destination as? DescriptionViewController
+            guard let indexPath = sender as? IndexPath else { return }
+            descriptionVC?.userDesc = [users[indexPath.row]]
+        }
+        
+    }
+
 }
 
 extension ViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell_id", for: indexPath) as! UserCell
         cell.setupCell(user: users[indexPath.row])
@@ -54,10 +64,15 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == users.count - 1 {
             loadUsers()
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDescription", sender: indexPath)
+    }
+
 }

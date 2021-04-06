@@ -19,7 +19,7 @@ class UserCell: UITableViewCell {
 
     func setupCell(user: User) {
 
-        if user.picture.medium != "" {
+        if user.picture.large != "" {
             apiManager.getUserImage(url: user.picture.large) { (image) in
                 DispatchQueue.main.async {
                     self.userImage.image = image

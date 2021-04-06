@@ -17,6 +17,7 @@
 		23816C0C2618D8EA006CDC73 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23816C0B2618D8EA006CDC73 /* NetworkManager.swift */; };
 		23816C102618EAD9006CDC73 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23816C0F2618EAD9006CDC73 /* ViewController.swift */; };
 		23816C142619153A006CDC73 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23816C1326191539006CDC73 /* UserCell.swift */; };
+		23816C17261BD285006CDC73 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23816C16261BD282006CDC73 /* DescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		23816C0B2618D8EA006CDC73 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		23816C0F2618EAD9006CDC73 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		23816C1326191539006CDC73 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		23816C16261BD282006CDC73 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				23816C0F2618EAD9006CDC73 /* ViewController.swift */,
+				23816C16261BD282006CDC73 /* DescriptionViewController.swift */,
 				23816C1326191539006CDC73 /* UserCell.swift */,
 			);
 			path = Controller;
@@ -178,6 +181,7 @@
 				23816C052618A68D006CDC73 /* UserResponse.swift in Sources */,
 				23816C092618D8D1006CDC73 /* ApiManager.swift in Sources */,
 				23816BEC26189FE4006CDC73 /* AppDelegate.swift in Sources */,
+				23816C17261BD285006CDC73 /* DescriptionViewController.swift in Sources */,
 				23816BEE26189FE4006CDC73 /* SceneDelegate.swift in Sources */,
 				23816C142619153A006CDC73 /* UserCell.swift in Sources */,
 			);
