@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         if segue.identifier == "showDescription" {
             let descriptionVC = segue.destination as? DescriptionViewController
             guard let indexPath = sender as? IndexPath else { return }
-            descriptionVC?.userDesc = [users[indexPath.row]]
+            descriptionVC?.user = users[indexPath.row]
         }
         
     }

@@ -19,7 +19,7 @@ class DescriptionViewController: UIViewController {
     private let apiManager = ApiManager.shared
     
     var phoneNumber: String = ""
-    var userDesc = [User]()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,25 +47,23 @@ class DescriptionViewController: UIViewController {
     
     func setupView() {
         
-        if userDesc.count > 0 {
-            let user = userDesc[0]
-            
-            if user.picture.large != "" {
-                apiManager.getUserImage(url: user.picture.large) { (image) in
-                    DispatchQueue.main.async {
-                        self.userImage.image = image
-                    }
+        guard let user = user else { return }
+        
+        if user.picture.large != "" {
+            apiManager.getUserImage(url: user.picture.large) { (image) in
+                DispatchQueue.main.async {
+                    self.userImage.image = image
                 }
             }
-            
-            phoneNumber = user.phone
-            callButton.setTitle("Phone: " + user.phone, for: .normal)
-            
-            nameLabel.text = "Name: " + user.name.title + " " + user.name.first  + " " + user.name.last + "\n gender: " + user.gender.rawValue
-            dobLabel.text = "Date of birth: " + getDateFormat(input: user.dob.date) + "\n age: " + String(user.dob.age)
-            emailLabel.text = "Mail: " + user.email
-            descriptionLabel.text = "More about me:\n I am from " + user.location.city + " in " + user.location.country + ".\n I have been registered here for " + String(user.registered.age) + " years"
         }
+        
+        phoneNumber = user.phone
+        callButton.setTitle("Phone: " + user.phone, for: .normal)
+        
+        nameLabel.text = "Name: " + user.name.title + " " + user.name.first  + " " + user.name.last + "\n gender: " + user.gender.rawValue
+        dobLabel.text = "Date of birth: " + getDateFormat(input: user.dob.date) + "\n age: " + String(user.dob.age)
+        emailLabel.text = "Mail: " + user.email
+        descriptionLabel.text = "More about me:\n I am from " + user.location.city + " in " + user.location.country + ".\n I have been registered here for " + String(user.registered.age) + " years"
         
     }
     

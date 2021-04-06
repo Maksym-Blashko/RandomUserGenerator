@@ -13,14 +13,18 @@ class ApiManager {
     private let networkManager = NetworkManager.shared
     private init() { }
     
-    private let endpoint = "https://randomuser.me/api/?results=20"
+    private let endpoint = "https://randomuser.me/api/"
+    private var page: Int = 1
     
     func getUsers(complition: @escaping ([User])->(Void)) {
     
-        networkManager.performRequest(url: endpoint) { (data) in
+        let url = endpoint + "?" + "results=20" + "&" + "page=" + String(self.page)
+        
+        networkManager.performRequest(url: url) { (data) in
             
             do {
                 let decodeData = try JSONDecoder().decode(UserResponse.self, from: data)
+                self.page += 1
                 complition(decodeData.results)
             } catch {
                 print(error.localizedDescription)
